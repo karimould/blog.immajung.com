@@ -53,6 +53,11 @@ exports.createPages = ({ actions, graphql }) => {
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions
 
+  if (page.context.locale) {
+    // if locale is already set, don't try to recreate pages again
+    return
+  }
+
   return new Promise(resolve => {
     deletePage(page)
 
