@@ -1,15 +1,17 @@
-import React, { ReactNode } from 'react'
-import './layout.scss'
+import React, { ReactElement, ReactNode } from 'react'
+import '../../../style/main.scss'
+import Nav from '../../nav/Nav'
 
 interface Props {
   children: ReactNode
   locale: string
 }
 
-const Layout = ({ children, locale }: Props): JSX.Element => {
+const Layout = ({ children, locale }: Props): ReactElement => {
   return (
     <>
-      <main>{children}</main>
+      <Nav locale={locale} />
+      <main className=" h-full">{children}</main>
     </>
   )
 }
