@@ -43,6 +43,7 @@ interface IndexProps {
 
 const IndexPage = ({ pageContext: { locale }, ...props }: IndexProps): ReactElement => {
   const { homePageData: data } = props.data
+  console.log('TCL: props', props)
   const { edges: posts } = props.data.blogPosts
   return (
     <Layout locale={locale}>
@@ -74,7 +75,7 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query HomeContent($locale: String) {
-    homePageData: markdownRemark(frontmatter: { pageKey: { eq: "page_home" }, locale: { eq: $locale } }) {
+    homePageData: mdx(frontmatter: { pageKey: { eq: "page_home" }, locale: { eq: $locale } }) {
       fields {
         slug
       }
@@ -86,9 +87,7 @@ export const pageQuery = graphql`
         text
       }
     }
-    blogPosts: allMarkdownRemark(
-      filter: { frontmatter: { pageKey: { eq: "page_blogpost" }, locale: { eq: $locale } } }
-    ) {
+    blogPosts: allMdx(filter: { frontmatter: { pageKey: { eq: "page_blogpost" }, locale: { eq: $locale } } }) {
       edges {
         node {
           fields {

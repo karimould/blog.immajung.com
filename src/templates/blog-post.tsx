@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Layout from '../components/layouts/main/Layout'
 import SEO from '../components/util/seo/Seo'
 
@@ -8,9 +9,9 @@ interface BlogpostProps {
     locale: string
   }
   data: {
-    markdownRemark: {
+    mdx: {
       id: string
-      html: string
+      body: string
       frontmatter: {
         date: Date
         title: string
@@ -21,14 +22,14 @@ interface BlogpostProps {
 }
 
 const BlogPost = ({ pageContext: { locale }, data }: BlogpostProps): JSX.Element => {
-  const { markdownRemark: post } = data
+  const { mdx: post } = data
   return (
     <Layout locale={locale}>
       <SEO title="SEO Title Home" metaDescription="SEO Desc Home" />
       <h1>title: {post.frontmatter.title}</h1>
       <p>description: {post.frontmatter.description}</p>
       <p>date: {post.frontmatter.date}</p>
-      <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      <MDXRenderer>{post.body}</MDXRenderer>
     </Layout>
   )
 }
@@ -37,9 +38,9 @@ export default BlogPost
 
 export const pageQuery = graphql`
   query BlogPostByID($id: String!) {
-    markdownRemark(id: { eq: $id }) {
+    mdx(id: { eq: $id }) {
       id
-      html
+      body
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
