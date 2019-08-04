@@ -51,10 +51,15 @@ const IndexPage = ({ pageContext: { locale }, data: { homePageData, blogPosts } 
     <h2>{i18n[locale].text}</h2> */}
 
         {/* <h2 className="border-black">BlogPosts:</h2> */}
-        <div className="mt-16 px-6 flex flex-col justify-center items-start">
+        <div className="px-6 md:px-0 flex flex-col justify-center items-start">
           {posts.map(
             ({ frontmatter: { title }, fields: { slug } }, index): ReactNode => (
-              <Link key={index} to={slug} className="mb-2 uppercase truncate w-full" title="link to blog post">
+              <Link
+                key={index}
+                to={slug}
+                className="mb-2 uppercase truncate w-full border-b border-white transition-all hover:border-black"
+                title="link to blog post"
+              >
                 {title}
               </Link>
             ),

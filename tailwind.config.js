@@ -34,5 +34,8 @@ module.exports = {
         full: '100%',
       },
     },
+    variants: {
+      borderWidth: ['responsive', 'hover'],
+    },
   },
 }
