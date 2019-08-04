@@ -29,7 +29,7 @@ const BlogPost = ({ pageContext: { locale }, data }: BlogpostProps): ReactElemen
   return (
     <Layout locale={locale}>
       <SEO title="SEO Title Home" metaDescription="SEO Desc Home" />
-      <div className="container">
+      <div className="container px-4">
         <MDXRenderer>{body}</MDXRenderer>
       </div>
     </Layout>
