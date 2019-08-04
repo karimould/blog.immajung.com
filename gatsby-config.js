@@ -5,8 +5,8 @@ module.exports = {
       'This repo contains an example website that is built with Gatsby, and Netlify CMS.It follows the JAMstack architecture by using Git as a single source of truth, and Netlify for continuous deployment, and CDN distribution.',
   },
   plugins: [
-    'gatsby-plugin-react-helmet',
     `gatsby-plugin-typescript`,
+    'gatsby-plugin-react-helmet',
     `gatsby-plugin-postcss`,
     `gatsby-plugin-mdx`,
     {
@@ -20,7 +20,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/src/pages`,
+        path: `${__dirname}/src/content`,
         name: 'pages',
       },
     },

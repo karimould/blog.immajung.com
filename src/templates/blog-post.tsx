@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Layout from '../components/layouts/main/Layout'
@@ -21,15 +21,17 @@ interface BlogpostProps {
   }
 }
 
-const BlogPost = ({ pageContext: { locale }, data }: BlogpostProps): JSX.Element => {
-  const { mdx: post } = data
+const BlogPost = ({ pageContext: { locale }, data }: BlogpostProps): ReactElement => {
+  const {
+    mdx: { body },
+  } = data
+  console.log('TCL: data', data)
   return (
     <Layout locale={locale}>
       <SEO title="SEO Title Home" metaDescription="SEO Desc Home" />
-      <h1>title: {post.frontmatter.title}</h1>
-      <p>description: {post.frontmatter.description}</p>
-      <p>date: {post.frontmatter.date}</p>
-      <MDXRenderer>{post.body}</MDXRenderer>
+      <div className="container">
+        <MDXRenderer>{body}</MDXRenderer>
+      </div>
     </Layout>
   )
 }
@@ -37,8 +39,8 @@ const BlogPost = ({ pageContext: { locale }, data }: BlogpostProps): JSX.Element
 export default BlogPost
 
 export const pageQuery = graphql`
-  query BlogPostByID($id: String!) {
-    mdx(id: { eq: $id }) {
+  query BlogPostByID($slug: String) {
+    mdx(fields: { slug: { eq: $slug } }) {
       id
       body
       frontmatter {
