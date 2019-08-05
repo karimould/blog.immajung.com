@@ -47,7 +47,7 @@ interface PostAuthorProps {
 
 export const PostAuthors = ({ authors }: PostAuthorProps): ReactElement => {
   return (
-    <div className="flex lg:flex-col justify-center items-center flex-wrap">
+    <div className="flex justify-center items-center lg:justify-start flex-wrap">
       {authors.map(
         ({ name, link, image }, index): ReactElement => (
           <PostAuthor key={index} name={name} link={link} image={image} />
@@ -67,7 +67,7 @@ export const PostAuthor = ({
   image: { childImageSharp: { fixed: FixedObject } }
 }): ReactElement => {
   return (
-    <div className="w-1/3 lg:w-full p-4">
+    <div className="w-1/3 lg:w-1/2 p-4">
       <a className="pointer flex flex-col justify-center items-center" href={link}>
         <span>{name}</span>
         {image ? <Img className="rounded-full" fixed={image.childImageSharp.fixed}></Img> : null}
