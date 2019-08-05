@@ -69,8 +69,8 @@ export const PostAuthor = ({
   return (
     <div className="w-1/3 lg:w-full p-4">
       <a className="pointer flex flex-col justify-center items-center" href={link}>
-        <span className="">{name}</span>
-        {image ? <Img className=" rounded-full" fixed={image.childImageSharp.fixed}></Img> : null}
+        <span>{name}</span>
+        {image ? <Img className="rounded-full" fixed={image.childImageSharp.fixed}></Img> : null}
       </a>
     </div>
   )
