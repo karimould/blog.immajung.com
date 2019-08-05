@@ -1,7 +1,8 @@
-import React, { ReactElement } from 'react'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import React, { ReactElement } from 'react'
 import Layout from '../components/layouts/main/Layout'
+import { Author, PostAuthors } from '../components/mdx/PostComponents'
 import SEO from '../components/util/seo/Seo'
 
 interface BlogpostProps {
@@ -16,6 +17,7 @@ interface BlogpostProps {
         date: Date
         title: string
         description: string
+        authors: Author[]
       }
     }
   }
@@ -23,14 +25,19 @@ interface BlogpostProps {
 
 const BlogPost = ({ pageContext: { locale }, data }: BlogpostProps): ReactElement => {
   const {
-    mdx: { body },
+    mdx: { body, frontmatter },
   } = data
-  console.log('TCL: data', data)
   return (
     <Layout locale={locale}>
       <SEO title="SEO Title Home" metaDescription="SEO Desc Home" />
-      <div className="container px-4">
-        <MDXRenderer>{body}</MDXRenderer>
+      <div className="container px-4 lg:px-0 flex flex-col lg:flex-row">
+        <div className="lg:w-2/12"></div>
+        <div className="lg:w-8/12">
+          <MDXRenderer pageContext={frontmatter}>{body}</MDXRenderer>
+        </div>
+        <div className="lg:w-2/12 mb-8">
+          <PostAuthors authors={frontmatter.authors} />
+        </div>
       </div>
     </Layout>
   )
@@ -44,9 +51,20 @@ export const pageQuery = graphql`
       id
       body
       frontmatter {
-        date(formatString: "MMMM DD, YYYY")
+        date
         title
         description
+        authors {
+          name
+          link
+          image {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
       }
     }
   }
