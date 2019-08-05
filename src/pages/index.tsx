@@ -1,8 +1,7 @@
 import { graphql, Link } from 'gatsby'
 import React, { ReactNode } from 'react'
-import Layout from '../components/layouts/main/Layout'
-import { i18n } from '../constants/i18n'
 import { FormattedTitleDate } from '../components/formattingUtils/Formatting'
+import Layout from '../components/layouts/main/Layout'
 
 interface HomepageData {
   fields: {
