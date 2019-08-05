@@ -17,7 +17,7 @@ interface BlogpostProps {
         date: Date
         title: string
         description: string
-        authors: Author[]
+        authors?: Author[]
       }
     }
   }
@@ -36,7 +36,7 @@ const BlogPost = ({ pageContext: { locale }, data }: BlogpostProps): ReactElemen
           <MDXRenderer pageContext={frontmatter}>{body}</MDXRenderer>
         </div>
         <div className="lg:w-2/12 mb-8">
-          <PostAuthors authors={frontmatter.authors} />
+          <PostAuthors authors={frontmatter.authors || []} />
         </div>
       </div>
     </Layout>
@@ -59,8 +59,8 @@ export const pageQuery = graphql`
           link
           image {
             childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
+              fixed(width: 80, height: 80) {
+                ...GatsbyImageSharpFixed
               }
             }
           }

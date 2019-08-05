@@ -1,4 +1,4 @@
-import Img, { FluidObject } from 'gatsby-image'
+import Img, { FluidObject, FixedObject } from 'gatsby-image'
 import React, { ReactElement, ReactNode } from 'react'
 interface PostHeadingProps {
   children?: ReactNode
@@ -38,7 +38,7 @@ export const PostParagraph = ({ children }: { children?: ReactNode }): ReactElem
 export interface Author {
   name: string
   link: string
-  image: { childImageSharp: { fluid: FluidObject } }
+  image: { childImageSharp: { fixed: FixedObject } }
 }
 
 interface PostAuthorProps {
@@ -47,7 +47,7 @@ interface PostAuthorProps {
 
 export const PostAuthors = ({ authors }: PostAuthorProps): ReactElement => {
   return (
-    <div className="flex lg:flex-col items-center flex-wrap">
+    <div className="flex lg:flex-col justify-center items-center flex-wrap">
       {authors.map(
         ({ name, link, image }, index): ReactElement => (
           <PostAuthor key={index} name={name} link={link} image={image} />
@@ -64,15 +64,13 @@ export const PostAuthor = ({
 }: {
   name: string
   link: string
-  image: { childImageSharp: { fluid: FluidObject } }
+  image: { childImageSharp: { fixed: FixedObject } }
 }): ReactElement => {
   return (
     <div className="w-1/3 lg:w-full p-4">
       <a className="pointer flex flex-col justify-center items-center" href={link}>
         <span className="">{name}</span>
-        <div className="w-full sm:px-8 md:px-16 lg:px-8">
-          {image ? <Img className=" rounded-full" fluid={image.childImageSharp.fluid}></Img> : null}
-        </div>
+        {image ? <Img className=" rounded-full" fixed={image.childImageSharp.fixed}></Img> : null}
       </a>
     </div>
   )
