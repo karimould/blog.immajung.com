@@ -1,7 +1,7 @@
 import { graphql, Link } from 'gatsby'
 import React, { ReactNode } from 'react'
+import { FormattedTitleDate } from '../components/formattingUtils/Formatting'
 import Layout from '../components/layouts/main/Layout'
-import { i18n } from '../constants/i18n'
 
 interface HomepageData {
   fields: {
@@ -42,25 +42,20 @@ interface IndexProps {
 const IndexPage = ({ pageContext: { locale }, data: { homePageData, blogPosts } }: IndexProps): ReactNode => {
   const { title, text } = homePageData.frontmatter
   const { nodes: posts } = blogPosts
+
   return (
     <Layout locale={locale}>
       <div className="container">
-        {/* <h1>title: {title}</h1>
-      <p>Content: {text}</p>
-      <p>Locale: {locale}</p>
-    <h2>{i18n[locale].text}</h2> */}
-
-        {/* <h2 className="border-black">BlogPosts:</h2> */}
         <div className="px-6 md:px-0 flex flex-col justify-center items-start">
           {posts.map(
-            ({ frontmatter: { title }, fields: { slug } }, index): ReactNode => (
+            ({ frontmatter: { title, date }, fields: { slug } }, index): ReactNode => (
               <Link
                 key={index}
                 to={slug}
                 className="mb-2 uppercase truncate w-full border-b border-white transition-all hover:border-black"
                 title="link to blog post"
               >
-                {title}
+                <FormattedTitleDate title={title} date={date} />
               </Link>
             ),
           )}

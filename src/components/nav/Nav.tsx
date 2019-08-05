@@ -11,7 +11,7 @@ const Nav = ({ locale }: Props): ReactElement => {
 
   return (
     <nav className="sticky top-0 ">
-      <div className="container pt-4 px-4 md:px-0 flex justify-end">
+      <div className="container pt-4 px-4 xl:px-0 flex justify-end">
         <Link
           className="uppercase border-b border-white transition-all hover:border-black"
           to={locale === 'en' ? '/' : '/de'}

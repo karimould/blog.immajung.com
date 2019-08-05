@@ -5,11 +5,26 @@ pageKey: page_blogpost
 title: Hello World DE First
 date: 2018-12-07T15:04:10.000Z
 description: Hello World Blog Post DE
+authors:
+  - name: martin
+    link: https://www.kireew.com
+    image: ../../../img/martin.png
+  - name: krim
+    link: https://www.kireew.com
+    image: ../../../img/martin.png
+  - name: pio
+    link: https://www.kireew.com
+    image: ../../../img/martin.png
 ---
 
-import { PostHeading, PostParagraph } from '../../../components/mdx/PostComponents'
+import { FormattedDate } from '../../../components/formattingUtils/Formatting'
+import { PostAuthors } from '../../../components/mdx/PostComponents'
 
 # Aliqua deserunt duis nostrud exercitation
+
+<div className="mb-8">
+  <FormattedDate date={props.pageContext.date} />
+</div>
 
 ## Aliqua deserunt duis nostrud exercitation
 

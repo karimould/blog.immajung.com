@@ -21,6 +21,7 @@ module.exports = {
     extend: {
       container: {
         center: true,
+        padding: '2rem',
       },
       fontSize: {
         0: '0rem',
@@ -32,6 +33,9 @@ module.exports = {
         '6/10': '60%',
         '3/4': '75%',
         full: '100%',
+      },
+      minWidth: {
+        '1/2': '50%',
       },
     },
     variants: {
