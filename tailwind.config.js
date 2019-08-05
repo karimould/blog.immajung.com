@@ -37,6 +37,9 @@ module.exports = {
       minWidth: {
         '1/2': '50%',
       },
+      listStyleType: {
+        square: 'square',
+      },
     },
     variants: {
       borderWidth: ['responsive', 'hover'],

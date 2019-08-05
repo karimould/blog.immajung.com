@@ -20,10 +20,10 @@ const Layout = ({ children, locale }: Props): ReactElement => {
         h3: (props: { children?: ReactNode }): ReactElement => <PostHeading h3 {...props} />,
         h4: (props: { children?: ReactNode }): ReactElement => <PostHeading h4 {...props} />,
         p: PostParagraph,
+        ul: (props: { children?: ReactNode }): ReactElement => <p {...props} className="list-inside list-square" />,
         // h2: DesignSystem.H2,
         // h3: DesignSystem.H3,
         // Or define component inline
-        // p: props => <p {...props} style={{ color: 'rebeccapurple' }} />,
       }}
     >
       <Nav locale={locale} />
