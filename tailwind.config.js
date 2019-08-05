@@ -39,6 +39,7 @@ module.exports = {
       },
       listStyleType: {
         square: 'square',
+        'leading-zero': 'decimal-leading-zero;',
       },
     },
     variants: {
