@@ -1,0 +1,112 @@
+---
+templateKey: blog-post
+locale: de
+pageKey: page_blogpost
+title: Der JAMStack, ein Überblick.
+seo_title: Der JAMStack? Ein Überblick.
+date: 2019-08-14T15:04:10.000Z
+seo_description: Was ist der JAMStack ? In diesem Blockpost wird einen Übersicht zu dem JAMStack gegeben.
+authors:
+  - name: martin
+    link: https://www.kireew.com
+    image: ../../../img/martin.png
+tags:
+  - jamstack
+  - javascript
+  - web
+---
+
+import { FormattedDate } from '../../../components/formattingUtils/Formatting'
+import { PostAuthors } from '../../../components/mdx/PostComponents'
+import Image from '../../../components/util/image/Image'
+
+# JAMStack, ein Überblick
+
+<div className="mb-8">
+  <FormattedDate date={props.pageContext.date} />
+</div>
+
+JAMStack ist ein immer öfter vorkommendes Buzzword und revolutioniert gerade das Web Development. Aber was steckt eigentlich hinter dem JAMStack ?
+
+Beim JAMstack ist im Gegensatz zu den anderen Stacks die Auswahl der Technologien weitestgehend flexibel. Es ist ein neuer Ansatz für die Implementierung von Websites und Web-Apps, die viele Vorteile mit sich bringt und viele Probleme löst.
+
+Dass der JAMStack nicht nur ein neuer Trend ist, sieht man vor allem durch die Implementierung von etablierten Unternehmen wie Nike und Facebook.
+Die beiden Unternehmen setzen immer öfter bei ihren Web-Projekten auf den JAMStack.
+
+### [Libra](https://libra.org/de-DE/?noredirect=de-DE)
+
+### [NIKE](https://justdoit.nike.com/)
+
+## Genug des Sales! Wofür steht nun das Wort JAMStack ?
+
+![JAMStack GIF](https://media.giphy.com/media/1fkBA64aGVTsi9GySS/giphy.gif)
+
+Der JAMStack hat nichts mit dem musikalischen JAM zu tun und leider auch nichts mit Marmelade (den konnten wir uns nicht verkneifen :D).
+
+### <span className="font-bold underline text-4xl">J</span>avascript:
+
+Mit der Hilfe von Javascript werden die statischen Inhalte von HTML und CSS in dynamische Web-Apps verwandelt. Im JAMStack ist es egal welches Framework oder ob überhaupt ein Framework verwendet wird. Der Javascript-Code wird im Browser aufgerufen und auch dort ausgeführt.
+
+### <span className="font-bold underline text-4xl">A</span>PI:
+
+Serverseitige Funktionen, wie z.B. das Lesen von Daten aus einer Datenbank, werden in wiederverwendbare APIs ausgelagert. Die Business-Logik einer Web-App wird in diesem Teil vom JAMStack abgebildet.
+
+### <span className="font-bold underline text-4xl">M</span>arkdown:
+
+Die Inhalte im Web werden als statische HTML-Dateien aus unterschiedlichen Quellen bereitgestellt. Eine beliebte Möglichkeit für das Erzeugen der HTML-Seiten ist die Bereitstellung des Contents über einfacher Markdown-Files im Textformat.
+
+## Wie unterscheidet sich der JAMStack vom traditionellen Ansatz?
+
+### <b>Oldland:</b>
+
+In der alten Welt liegt der Fokus auf dem Content-Management-System (CMS). Hier werden alle Inhalte und Daten auf dem Server gerendert und dann per Aufrufen eines Links vom Server zur Verfügung gestellt.
+Der Entwickler ist gezwungen die vorgegebenen Programmierparadigmen und Technologien des jeweiligen Systems zu nutzen.
+Durch die monolithische Architektur sind das CMS (Backend) und Frontend stark miteinander verschmolzen und quasi eine Einheit.
+
+Auf diese Weise verzichtet der Entwickler auf die Freiheit und die Möglichkeiten eines frei wählbaren Stacks und deren möglichen Vorteile, kriegt aber im Gegenzug eine Anzahl von etablierten Entwickler-Werkzeugen.
+
+### <b>Newland:</b>
+
+Beim JAMStack sind alle Bestandteile völlig voneinander entkoppelt. Auf diese Weise können für das Frontend und das Backend beliebige Technologien frei ausgewählt werden. Die einzelnen JAMStack-Komponenten miteinander zu verknüpfen, können unterschiedlichen Ansätze gewählt werden (REST, GraphQL, ...).
+
+Die gehosteten statischen Dateien werden in den Browser geladen. Das mitgelieferte Javascript stellt die Funktionalitäten der Web-App bereit.
+Die serverseitige API ist getrennt vom statischen Inhalt und stellt möglichen dynamischen Content oder Anbindungen an andere Services bereit.
+
+Die Kapselung der einzelnen Bestandteile vom JAMStack, ermöglicht das einfache Hinzufügen oder auch Ersetzen durch andere Technologien und Features.
+Zum Beispiel gibt es die Möglichkeit einen Static-Site-Generator zwischen API und Markdown einzubauen, um weitere Vorteile des statischen Hostings auszubauen. Jedoch ist dieses Thema sehr weitreichend und wird in einem nachfolgendem Post weiter ausgeführt.
+
+## Was sind die Vorteile des JAMStacks?
+
+### Performance:
+
+Bei einem traditionellen Ansatz mit einem CMS wie z.B. Wordpress, wird sobald der User die Website aufruft eine Folge von Abfragen an die Datenbank, Backend-Logik und die Verbindunge vom Server zum Browser durchgeführt. Dieser Vorgang kostet Zeit, ist komplex und verzögert das erste Anzeigen der Seite. Beim JAMStack fällt diese Kette an Aufgaben weg, da die Seiten schon fertig generiert gehostet wird. So wird die Zeit zwischen dem Seitenaufruf und dem Sehen der Website drastisch minimiert. Durch das schnellere Laden der Seite ist auch ein besseres Ergebnis-SEO möglich.
+
+### Security:
+
+Durch das Fehlen des Server-Side-Renderings minimiert sich die mögliche Angriffsfläche erheblich.
+
+### Content Delivery and Scalability:
+
+Die statischen Dateien können meistens kostengünstig oder sogar bei einfachen Web-Apps kostenlos gehostet werden. Dadurch dass die Dateien statisch zur Verfügung stehen, ist das Hosting einfach und unabhängig vom Anbieter. Außerdem ist das Hochfahren weiterer Instanzen bei erhöhter Last nahezu mühelos nach Bedarf möglich.
+
+### Developer Experience:
+
+Durch die Flexibilität des Stacks ist der Entwickler in seiner Produktivität und seinen Möglichkeiten nicht durch bestimmte Technologien begrenzt. Dadurch steigt einerseits die Effizienz und vor allem die Qualität, weil die Implementierung von maßgeschneiderten Lösungen möglich ist.
+
+## Was bedeutet das nun für uns?
+
+Alles in allem stellt der JAMStack eine Revolution für das Web Development dar, welche gerade erst am Anfang steht. Durch die große Community und die unterschiedlichen Services, wie z.B. Netlify, Sanity.io, SnipCart und viele mehr, wird der JAMStack täglich effizienter, günstiger und weiterentwickelt.
+
+Der JAMStack ist da und wird auch weiterhin bleiben. Vor allem die Bemühungen durch die etablierten Lösungen (Wordpress, Drupal,..) zeigen, dass das Entkoppeln der einzelnen Schichten Sinn ergibt und zukunftsfähig ist.
+Deshalb wird die Entwicklung von neuen Plugins, um das Bereitstellen von modernen APIs (https://www.wpgraphql.com/ ) stark forciert.
+
+Dieser Blog wurde auch mit dem JAMStack gebaut.
+Mit Gatsby als Static-Site-Generator, NetlifyCMS als CMS und ist gehostet auf Netlify. Das Deployment findet automatisch statt. Weitere Infos zu den einzelnen Technologien und dem Zusammenspiel gibt es in den nächsten Wochen in einzelnen Posts!
+
+### Nützliche Links:
+
+[JAMStack](https://jamstack.org/)
+
+[Netlify](https://www.netlify.com/)
+
+[SourceCode](https://github.com/karimould/blog.immajung.com)

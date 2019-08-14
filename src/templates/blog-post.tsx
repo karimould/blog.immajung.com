@@ -16,7 +16,8 @@ interface BlogpostProps {
       frontmatter: {
         date: Date
         title: string
-        description: string
+        seo_title: string
+        seo_description: string
         authors?: Author[]
       }
     }
@@ -29,7 +30,7 @@ const BlogPost = ({ pageContext: { locale }, data }: BlogpostProps): ReactElemen
   } = data
   return (
     <Layout locale={locale}>
-      <SEO title="SEO Title Home" metaDescription="SEO Desc Home" />
+      <SEO title={frontmatter.seo_title} metaDescription={frontmatter.seo_description} />
       <div className="container px-4 lg:px-0 flex flex-col lg:flex-row">
         <div className="lg:w-2/12"></div>
         <div className="lg:w-8/12">
@@ -53,7 +54,8 @@ export const pageQuery = graphql`
       frontmatter {
         date
         title
-        description
+        seo_title
+        seo_description
         authors {
           name
           link
