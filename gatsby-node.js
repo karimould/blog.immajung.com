@@ -4,7 +4,6 @@ const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 const locales = require('./src/constants/locales')
 
-
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
 

@@ -18,12 +18,12 @@ const Nav = ({ locale }: Props): ReactElement => {
         >
           home
         </Link>
-        <Link
+        {/* <Link
           className="ml-4 uppercase border-b border-white transition-all hover:border-black"
           to={locale === 'en' ? '/de' : '/'}
         >
           {localeText}
-        </Link>
+        </Link> */}
       </div>
     </nav>
   )
