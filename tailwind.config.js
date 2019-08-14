@@ -1,29 +1,49 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const theme = require('tailwindcss/defaultTheme')
+
 module.exports = {
+  plugins: [
+    function({ addUtilities, addBase }) {
+      const newBaseStyles = {}
+      const newUtilities = {
+        '.transition-all': {
+          transition: 'all 250ms ease-in-out',
+        },
+        '.transition-opacity': {
+          transition: 'opacity 250ms ease-in-out',
+        },
+      }
+      addUtilities(newUtilities, ['responsive', 'hover'])
+      addBase(newBaseStyles)
+    },
+  ],
   theme: {
-    screens: {
-      sm: '575px',
-      md: '768px',
-      lg: '1024px',
-      xl: '1280px',
-    },
-    fontFamily: {
-      display: ['Gilroy', 'sans-serif'],
-      body: ['Graphik', 'sans-serif'],
-    },
     extend: {
-      colors: {
-        '1': '#9cdbff',
-        '2': '#ffffff',
-        '3': '#b2b2b2',
-        '4': '#A52A2A',
-        '5': '#ff5f00',
-        '6': '#33ff00',
+      container: {
+        center: true,
+        padding: '2rem',
       },
-      height: {
-        '25vh': '25vh',
-        '50vh': '50vh',
-        '75vh': '75vh',
+      fontSize: {
+        0: '0rem',
       },
+      minHeight: {
+        '0': '0',
+        '1/4': '25%',
+        '1/2': '50%',
+        '6/10': '60%',
+        '3/4': '75%',
+        full: '100%',
+      },
+      minWidth: {
+        '1/2': '50%',
+      },
+      listStyleType: {
+        square: 'square',
+        'leading-zero': 'decimal-leading-zero;',
+      },
+    },
+    variants: {
+      borderWidth: ['responsive', 'hover'],
     },
   },
 }

@@ -1,13 +1,15 @@
-const _ = require('lodash')
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 const locales = require('./src/constants/locales')
 
-exports.createPages = ({ actions, graphql }) => {
+exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
 
-  return graphql(`
+  const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
+
+  const result = await graphql(`
     {
       allMdx {
         edges {
@@ -24,29 +26,32 @@ exports.createPages = ({ actions, graphql }) => {
         }
       }
     }
-  `).then(result => {
-    if (result.errors) {
-      result.errors.forEach(e => console.error(e.toString()))
-      return Promise.reject(result.errors)
-    }
-    const posts = result.data.allMdx.edges
+  `)
 
-    posts.forEach(edge => {
-      //Check if pages has a template key
-      const locale = edge.node.frontmatter.locale
-      if (edge.node.frontmatter.templateKey != null) {
-        const id = edge.node.id
-        createPage({
-          path: edge.node.fields.slug,
-          component: path.resolve(`src/templates/${String(edge.node.frontmatter.templateKey)}.tsx`),
-          // additional data can be passed via context
-          context: {
-            id,
-            locale,
-          },
-        })
-      }
-    })
+  if (result.errors) {
+    reporter.panic('🚨  ERROR: Loading "createPages" query', result.errors)
+  }
+  const posts = result.data.allMdx.edges
+
+  posts.forEach((post, index) => {
+    //Check if pages has a template key
+    const locale = post.node.frontmatter.locale
+    const previous = index === posts.length - 1 ? null : posts[index + 1].node
+    const next = index === 0 ? null : posts[index - 1].node
+
+    if (post.node.frontmatter.templateKey !== null) {
+      createPage({
+        path: post.node.fields.slug,
+        component: blogPost,
+        // additional data can be passed via context
+        context: {
+          slug: post.node.fields.slug,
+          locale,
+          previous,
+          next,
+        },
+      })
+    }
   })
 }
 
