@@ -40,7 +40,7 @@ const Layout = ({ children, locale }: Props): ReactElement => {
       }}
     >
       <Nav locale={locale} />
-      <main className="h-full py-24">{children}</main>
+      <main className="min-h-screen h-full py-24">{children}</main>
       <Footer />
     </MDXProvider>
   )
