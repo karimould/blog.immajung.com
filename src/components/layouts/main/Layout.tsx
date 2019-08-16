@@ -27,6 +27,13 @@ const Layout = ({ children, locale }: Props): ReactElement => {
         a: (props: { children?: ReactNode }): ReactElement => (
           <a {...props} target="_blank" rel="noopener noreferrer" className="text-indigo-800 hover:underline"></a>
         ),
+        img: (props: { children?: ReactNode }): ReactElement => (
+          <img
+            {...props}
+            className=""
+            // loading="lazy"
+          />
+        ),
         // h2: DesignSystem.H2,
         // h3: DesignSystem.H3,
         // Or define component inline
