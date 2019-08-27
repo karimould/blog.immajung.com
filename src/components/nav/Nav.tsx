@@ -1,5 +1,6 @@
 import { Link } from 'gatsby'
 import React, { ReactElement, useState, useEffect } from 'react'
+import { RoutingLinks } from '../../constants/routingslinks'
 
 interface Props {
   locale: string
@@ -12,10 +13,7 @@ const Nav = ({ locale }: Props): ReactElement => {
   return (
     <nav className="sticky top-0 ">
       <div className="container pt-4 px-4 xl:px-0 flex justify-end">
-        <Link
-          className="uppercase border-b border-white transition-all hover:border-black"
-          to={locale === 'en' ? '/' : '/de'}
-        >
+        <Link className="uppercase border-b border-white transition-all hover:border-black" to={RoutingLinks.HOME_DE}>
           home
         </Link>
         {/* <Link

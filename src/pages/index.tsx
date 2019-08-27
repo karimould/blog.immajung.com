@@ -46,7 +46,7 @@ const IndexPage = ({ pageContext: { locale }, data: { homePageData, blogPosts } 
   return (
     <Layout locale={locale}>
       <div className="container">
-        <div className="px-6 md:px-0 flex flex-col justify-center items-start">
+        <div className="flex flex-col justify-center items-start">
           {posts.map(
             ({ frontmatter: { title, date }, fields: { slug } }, index): ReactNode => (
               <Link
